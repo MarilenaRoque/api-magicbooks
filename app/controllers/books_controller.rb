@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
     def index
-        @book = Book.all
-        render json: @books
+        @books = Book.all
+        respond_to do |format|
+            format.json { render :json => @books }
+        end
     end
 
     def create
